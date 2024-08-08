@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLIN BOT - Main Page</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="left-part">
+            <!-- Content -->
+        </div>
+        <div class="middle-part">
+            <h1>Scrum Spartans</h1>
+            <div class="chat-box">
+                <div class="message-box">Chat message 1</div>
+                <div class="message-box">Chat message 2</div>
+            </div>
+            <form action="{% url 'send_message' %}" method="post">
+                {% csrf_token %}
+                {{ message_form.as_p }}
+                <button type="submit">Send</button>
+            </form>
+            <form action="{% url 'upload_file' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ file_form.as_p }}
+                <button type="submit">Upload File</button>
+            </form>
+            <form action="{% url 'upload_image' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ image_form.as_p }}
+                <button type="submit">Upload Image</button>
+            </form>
+            <form action="{% url 'record_voice' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ voice_form.as_p }}
+                <button type="submit">Record Voice</button>
+            </form>
+        </div>
+        <div class="right-part">
+            <!-- Content -->
+        </div>
+    </div>
+</body>
+</html>
